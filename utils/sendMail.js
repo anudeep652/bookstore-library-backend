@@ -28,7 +28,9 @@ export const sendMail = async (
       to: receiver,
       from: "webbuilders58@gmail.com",
       subject: "Here is your book!",
-      html: `Thank you for purchasing the book ${bookName} `,
+      html: `Thank you for purchasing the book ${bookName}
+      <p>Since this is a test application u will not receive the book</p> 
+      `,
     };
     await sgMail.send(msg);
   }
