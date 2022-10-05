@@ -6,7 +6,7 @@ import Book from "../modals/bookSchema.js";
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
+  // console.log(email, password);
 
   try {
     const user = await User.findOne({ email: email });
@@ -34,7 +34,7 @@ export const login = async (req, res) => {
 export const registerABook = async (req, res) => {
   const { bookName, authorName, buyAmount, rentAmount, imageUrl, description } =
     req.body;
-  console.log(bookName, authorName);
+  // console.log(bookName, authorName);
   try {
     await Book.create({
       name: bookName,

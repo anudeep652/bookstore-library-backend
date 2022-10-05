@@ -157,7 +157,7 @@ export const rentBook = async (req, res) => {
 // { bookName:String,subject:String,message:string}
 export const review = async (req, res) => {
   const { bookName, review, stars } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   const book = await Book.findOne({ name: bookName });
   const user = await User.findOne({ username: req.user.username });
   try {
@@ -194,7 +194,7 @@ export const review = async (req, res) => {
 
 export const contact = async (req, res) => {
   const { email, subject, message } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   // console.log(email, subject, message);
 
   try {

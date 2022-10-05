@@ -3,7 +3,7 @@ import User from "../modals/userSchema.js";
 
 export const authorizeUser = async (req, res, next) => {
   let token;
-  console.log("hello");
+  // console.log("hello");
 
   if (
     req.headers.authorization &&
@@ -20,7 +20,7 @@ export const authorizeUser = async (req, res, next) => {
 
       next();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return res.status(401).json({ error: "Not authorized" });
     }
   } else {
