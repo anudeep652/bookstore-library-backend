@@ -53,9 +53,13 @@ export const registerUser = async (req, res) => {
         });
 
         if (user) {
-          return res
-            .status(201)
-            .json({ username, email, token: generateJwt(user._id) });
+          return res.status(201).json({
+            username,
+            email,
+            token: generateJwt(user._id),
+            boughtBooks: user.boughtBooks,
+            rentedBooks: user.rentedBooks,
+          });
         }
       } catch (error) {
         return res.status(400).json({ message: "It is an error" });
