@@ -116,14 +116,10 @@ export const buyBook = async (req, res) => {
     user.boughtBooks.push(bookName);
 
     await user.save();
-    try {
-      sendMail(user, bookName);
-      return res
-        .status(200)
-        .json({ message: "Mail sent successfully", book: bookName });
-    } catch (error) {
-      return res.status(400).json({ error });
-    }
+    sendMail(user, bookName);
+    return res
+      .status(200)
+      .json({ message: "Mail sent successfully", book: bookName });
   } catch (error) {
     return res.status(400).json({ error: error });
   }
@@ -145,14 +141,11 @@ export const rentBook = async (req, res) => {
     user.rentedBooks.push(bookName);
 
     await user.save();
-    try {
-      sendMail(user, bookName);
-      return res
-        .status(200)
-        .json({ message: "Mail sent successfully", book: bookName });
-    } catch (error) {
-      return res.status(400).json({ error });
-    }
+
+    sendMail(user, bookName);
+    return res
+      .status(200)
+      .json({ message: "Mail sent successfully", book: bookName });
   } catch (error) {
     return res.status(400).json({ error: error });
   }
@@ -184,7 +177,7 @@ export const review = async (req, res) => {
       message: "Successfully reviewed",
       bookName,
       review: {
-        date: new Date().toLocaleDateString(),
+        date: calcTodayDate(),
         message: review.message,
         reviewer: user.username,
         subject: review.subject,
@@ -207,4 +200,11 @@ export const contact = async (req, res) => {
   } catch (error) {
     return res.status(400).json({ error: error });
   }
+};
+
+const calcTodayDate = () => {
+  const dateArr = new Date().toLocaleDateString().split("/");
+  let month = dateArr[0];
+  let day = dateArr[1];
+  return [day, month, dateArr[2]].join("/");
 };
