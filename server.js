@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, "https://admin-bookstore-library.netlify.app"],
+    origin: [process.env.FRONTEND_URL, process.env.ADMIN_FRONTEND_URL],
     optionsSuccessStatus: 200,
     credentials: true,
   })
