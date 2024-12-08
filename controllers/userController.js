@@ -155,7 +155,7 @@ export const rentBook = async (req, res) => {
 export const review = async (req, res) => {
   const { bookName, review, stars } = req.body;
   // console.log(req.body);
-  const book = await Book.findOne({ name: bookName });
+  const book = await Book.findOne({ name: { $eq: bookName } });
   const user = await User.findOne({ username: req.user.username });
   try {
     book.reviews.push({
